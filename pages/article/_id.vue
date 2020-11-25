@@ -1,26 +1,24 @@
 <template>
   <div>
-    <h1>Hello NuxtJS</h1>
-    <br>
-    <foo :posts="posts" />
+    <h1>{{article.title}}</h1>
+    <div>{{article.body}}</div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Foo from '@/components/Foo'
 export default {
-  components: {
-    Foo
-  },
-  name: 'HomePage',
+  name: 'ArticlePage',
   async asyncData (context) {
-    // console.log(context)
+    console.log(context)
     const { data } = await axios({
       method: 'GET',
       url: 'http://localhost:3000/data.json'
     })
-    return data
+    const id = Number(context.params.id)
+    return {
+      article: data.posts.find(item => item.id === id)
+    }
   },
   data () {
     return {
