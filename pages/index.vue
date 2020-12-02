@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{title}}</h1>
-    <nuxt-link to="/about">about</nuxt-link>
+    <nuxt-link to="/about">abou发发发t</nuxt-link>
     <br>
     <foo :posts="posts" />
   </div>
